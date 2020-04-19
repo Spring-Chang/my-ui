@@ -1,0 +1,45 @@
+/**
+* drill-table表格定义样式
+*/
+@charset "UTF-8";
+
+caption {
+	caption-side: top;
+	text-align:left;
+	padding: .5em;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+}
+.drill-table {
+	width: 99%;
+	border-collapse: collapse;
+	margin: 3px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.drill-table td, .drill-table th {
+	font-size: 1em;
+	border: 2px solid rgba(255, 255, 255, 1);
+	padding: 3px 3px 2px 3px;
+	text-align: center;
+}
+
+.drill-table th {
+	height: 45px;
+	font-size: 1.1em;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	background-color: #4fa6db;
+	color: #ffffff;
+}
+
+.drill-table tbody tr:nth-child(even) td {
+	background-color:#f9f9f9;
+	height: 28px;
+}
+
+.drill-table tbody tr:nth-child(odd) td {
+	background-color:#eeeeee;
+	height: 28px;
+}
