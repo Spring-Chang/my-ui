@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container">
-        <table id="comprehensiveDailyRpt" class="drill-table">
+        <table id="table" class="myui-table">
             <caption>梁山好汉排名</caption>
             <tr>
                 <th style="height: 5px;" field="index" >座次</th>
@@ -32,7 +32,7 @@
 </body>
 <script type="text/javascript">
     $(function () {
-        $('#comprehensiveDailyRpt').table({
+        $('#table').table({
             url : './table_data.json',
             method: 'get',
             sexFormatter : function (value, row, index) { //性别格式化回调函数
