@@ -1,20 +1,21 @@
 /**
- * drill table plugin version 2.0.0
+ * MyUI for jQuery
  *
- * 钻井table表格插件,专为钻井定制化开发,基于jQuery扩展
- * 从0开始写一个插件，希望后续有开发插件能力的同事继续完善下去
+ * Copyright (c) 2020 张翠山
  *
- * @author: 张仕宗(zhangshizong@cnpc.com.cn)
+ * MIT License
  *
- * @update : 2020.04.16
+ * 联系作者：290794272@qq.com(张翠山)
  *
- * @version : 2.0.0
+ * table组件 - MyUI for jQuery
+ *
+ * 版本：0.0.1
  */
 
 (function($) {
 
     // plugin definition
-    $.fn.drillTable = function(options) {
+    $.fn.table = function(options) {
 
         //放弃全局变量定义的用法，避免一个页面引用两次插件数据冲突
 
