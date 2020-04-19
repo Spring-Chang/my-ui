@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>example</title>
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.js"></script>
+    <script src="../../release/myui.bundle.js"></script>
+</head>
+<body>
+    <table id="comprehensiveDailyRpt" class="drill-table">
+        <tr>
+            <th rowspan="2" style="height: 5px;" field="orgName">组织机构</th>
+            <th colspan="3" style="height: 5px;">进尺(米)</th>
+            <th colspan="3" style="height: 5px;">开钻(口)</th>
+            <th colspan="3" style="height: 5px;">完井(口)</th>
+        </tr>
+        <tr>
+            <th style="height: 5px;" field="footageDaily" formatter="number">日</th>
+            <th style="height: 5px;" field="footageMonth" formatter="number">月</th>
+            <th style="height: 5px;" field="footageYear" formatter="number">年</th>
+            <th style="height: 5px;" field="spudinDaily" >日</th>
+            <th style="height: 5px;" field="spudinMonth" >月</th>
+            <th style="height: 5px;" field="spudinYear" >年</th>
+            <th style="height: 5px;" field="coplectionDaily" >日</th>
+            <th style="height: 5px;" field="coplectionMonth" >月</th>
+            <th style="height: 5px;" field="coplectionYear" >年</th>
+        </tr>
+    </table>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#comprehensiveDailyRpt').drillTable({
+            url : './table_data.json',
+            method: 'get'
+        });
+    });
+</script>
+</html>

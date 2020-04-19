@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "webpack",
+    "watch": "webpack --watch",
     "example": "http-server -p 8081"
   },
   "repository": {
@@ -28,6 +29,8 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
+    "css-loader": "^3.5.2",
+    "style-loader": "^1.1.4",
     "webpack": "^3.8.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^2.9.3"
