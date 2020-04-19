@@ -17,7 +17,28 @@
     // plugin definition
     $.fn.tabs = function(options) {
 
+        var _this = this;
+
+        $(this).children('input').click(function () {
+
+            var activeIndex = $(this).index();
+
+            $(_this).children("input").each(function (index, element) {
+                if(activeIndex != index) {
+                    $(this).removeClass("active");
+                } else if(activeIndex == index) {
+                    $(this).addClass("active");
+                }
+            });
+
+            $(_this).children("div").each(function (index, element) {
+                if (activeIndex != index) {
+                    $(this).hide();
+                } else if (activeIndex == index) {
+                    $(this).show();
+                }
+            });
+        });
     };
 
-    //  ...
 })(jQuery);

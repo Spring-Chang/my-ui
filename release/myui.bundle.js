@@ -72,6 +72,8 @@
 
 __webpack_require__(1);
 __webpack_require__(2);
+__webpack_require__(6);
+__webpack_require__(7);
 
 /***/ }),
 /* 1 */
@@ -602,6 +604,96 @@ function toComment(sourceMap) {
   var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
   return "/*# ".concat(data, " */");
 }
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * MyUI for jQuery
+ *
+ * Copyright (c) 2020 张翠山
+ *
+ * MIT License
+ *
+ * 联系作者：290794272@qq.com(张翠山)
+ *
+ * tabs组件 - MyUI for jQuery
+ *
+ * 版本：0.0.1
+ */
+
+(function ($) {
+
+    // plugin definition
+    $.fn.tabs = function (options) {
+
+        var _this = this;
+
+        $(this).children('input').click(function () {
+
+            var activeIndex = $(this).index();
+
+            $(_this).children("input").each(function (index, element) {
+                if (activeIndex != index) {
+                    $(this).removeClass("active");
+                } else if (activeIndex == index) {
+                    $(this).addClass("active");
+                }
+            });
+
+            $(_this).children("div").each(function (index, element) {
+                if (activeIndex != index) {
+                    $(this).hide();
+                } else if (activeIndex == index) {
+                    $(this).show();
+                }
+            });
+        });
+    };
+})(jQuery);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(3);
+            var content = __webpack_require__(8);
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "/**\r\n* myui-tabs页签样式定义\r\n*/\r\n@charset \"UTF-8\";\r\n\r\n.myui-tabs div {\r\n    width: 200px;\r\n    height: 200px;\r\n    display: none;\r\n}\r\n\r\n.myui-tabs .active {\r\n    background: white;\r\n}\r\n", ""]);
+// Exports
+module.exports = exports;
+
 
 /***/ })
 /******/ ]);

@@ -2,3 +2,13 @@
 * myui-tabs页签样式定义
 */
 @charset "UTF-8";
+
+.myui-tabs div {
+    width: 200px;
+    height: 200px;
+    display: none;
+}
+
+.myui-tabs .active {
+    background: white;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.js"></script>
+    <script src="../../release/myui.bundle.js"></script>
+</head>
+<body>
+<div id="tabs" class="myui-tabs">
+    <input type="button" value="选项1" class="active"/>
+    <input type="button" value="选项2"/>
+    <input type="button" value="选项3"/>
+    <input type="button" value="选项4"/>
+
+    <div style="display:block;">选项卡1里面的内容</div>
+    <div>选项卡2里面的内容</div>
+    <div>选项卡3里面的内容</div>
+    <div>选项卡4里面的内容</div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#tabs').tabs();
+    });
+</script>
+</html>
