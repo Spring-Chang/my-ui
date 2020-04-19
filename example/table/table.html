@@ -5,33 +5,44 @@
     <title>example</title>
     <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.js"></script>
     <script src="../../release/myui.bundle.js"></script>
+    <style type="text/css">
+        .container {
+            width: 800px;
+            height: 500px;
+        }
+    </style>
 </head>
 <body>
-    <table id="comprehensiveDailyRpt" class="drill-table">
-        <tr>
-            <th rowspan="2" style="height: 5px;" field="orgName">组织机构</th>
-            <th colspan="3" style="height: 5px;">进尺(米)</th>
-            <th colspan="3" style="height: 5px;">开钻(口)</th>
-            <th colspan="3" style="height: 5px;">完井(口)</th>
-        </tr>
-        <tr>
-            <th style="height: 5px;" field="footageDaily" formatter="number">日</th>
-            <th style="height: 5px;" field="footageMonth" formatter="number">月</th>
-            <th style="height: 5px;" field="footageYear" formatter="number">年</th>
-            <th style="height: 5px;" field="spudinDaily" >日</th>
-            <th style="height: 5px;" field="spudinMonth" >月</th>
-            <th style="height: 5px;" field="spudinYear" >年</th>
-            <th style="height: 5px;" field="coplectionDaily" >日</th>
-            <th style="height: 5px;" field="coplectionMonth" >月</th>
-            <th style="height: 5px;" field="coplectionYear" >年</th>
-        </tr>
-    </table>
+    <div class="container">
+        <table id="comprehensiveDailyRpt" class="drill-table">
+            <caption>梁山好汉排名</caption>
+            <tr>
+                <th style="height: 5px;" field="index" >座次</th>
+                <th style="height: 5px;" field="name" >原名</th>
+                <th style="height: 5px;" field="nickName">昵称</th>
+                <th style="height: 5px;" field="constellation" >星宿</th>
+                <th style="height: 5px;" field="birthDay" formatter="daily-date">生日</th>
+                <th style="height: 5px;" field="sex" formatter="sexFormatter">性别</th>
+                <th style="height: 5px;" field="effectiveness" formatter="number" >战斗指数</th>
+                <th style="height: 5px;" field="specialSkills" >特殊技能</th>
+                <th style="height: 5px;" field="remark" >备注</th>
+            </tr>
+        </table>
+    </div>
 </body>
 <script type="text/javascript">
     $(function () {
-        $('#comprehensiveDailyRpt').drillTable({
+        $('#comprehensiveDailyRpt').table({
             url : './table_data.json',
-            method: 'get'
+            method: 'get',
+            sexFormatter : function (value, row, index) { //性别格式化回调函数
+                if(value) {
+                    return "男";
+                } else if(!value) {
+                    return "女";
+                }
+                return value;
+            }
         });
     });
 </script>
