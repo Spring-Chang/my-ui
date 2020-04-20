@@ -60,165 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(1);
-__webpack_require__(2);
-__webpack_require__(6);
-__webpack_require__(7);
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * MyUI for jQuery
- *
- * Copyright (c) 2020 张翠山
- *
- * MIT License
- *
- * 联系作者：290794272@qq.com(张翠山)
- *
- * table组件 - MyUI for jQuery
- *
- * 版本：0.0.1
- */
-
-(function ($) {
-
-    // plugin definition
-    $.fn.table = function (options) {
-
-        //放弃全局变量定义的用法，避免一个页面引用两次插件数据冲突
-
-        this.url = options.url || '';
-        this.method = options.method || "GET";
-        this.dataOptions = [];
-        this.datas = [];
-
-        this.options = options || {};
-
-        var _this = this;
-
-        //遍历thread的所有tr，只取带有field的列
-        var theads = $(this).find("tr");
-        $(theads).each(function (index, trObject) {
-            $(trObject).children().each(function (index, tdObject) {
-                if (typeof $(tdObject).attr("field") != "undefined") {
-                    var ojbect = {};
-                    ojbect.field = $(tdObject).attr("field");
-                    ojbect.formatter = $(tdObject).attr("formatter");
-                    _this.dataOptions.push(ojbect);
-                }
-            });
-        });
-
-        //请求数据
-        $.ajax({
-            url: this.url,
-            method: this.method,
-            success: function success(response, index) {
-                $.each(response, function (index, value) {
-                    _this.datas.push(value);
-                });
-
-                var table = _this[0];
-
-                var html = getHtml(_this.datas, _this.dataOptions, _this.options);
-                $(html).appendTo(table);
-            }
-        });
-    };
-
-    // 计算table的html元素
-    function getHtml(datas, dataOptions, options) {
-        var html = "";
-
-        //双重for循环变量属性和值
-        $(datas).each(function (index, value) {
-            html += "<tr>";
-            $(dataOptions).each(function (index1, value1) {
-
-                if (value1.field === 'index') {
-                    //处理序号
-                    html += "<td>" + formatter(index + 1, null) + "</td>";
-                } else if (options.hasOwnProperty(value1.formatter) && typeof options[value1.formatter] === 'function') {
-                    //处理回调函数
-                    //调用回调函数，并返回值
-                    var result = options[value1.formatter].call(this, value[value1.field], value, index);
-                    html += "<td>" + result + "</td>";
-                } else {
-                    //处理其他类型
-                    html += "<td>" + formatter(value[value1.field], value1.formatter) + "</td>";
-                }
-            });
-            html += "</tr>";
-        });
-
-        return html;
-    };
-
-    //格式化数据
-    function formatter(value, formt) {
-
-        if (undefined != formt && value != null) {
-            switch (formt) {
-                case 'number':
-                    value = value.toFixed(2);
-                    break;
-                case 'daily-date':
-                    '2020-01-01';
-                    break;
-                default:
-                    value = value;
-            }
-        }
-        return value;
-    }
-
-    //  ...
-})(jQuery);
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var api = __webpack_require__(3);
-            var content = __webpack_require__(4);
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.i, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = api(content, options);
-
-var exported = content.locals ? content.locals : {};
-
-
-
-module.exports = exported;
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -493,20 +339,7 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "/**\r\n* myui-table表格定义样式\r\n*/\r\n@charset \"UTF-8\";\r\n\r\ncaption {\r\n\tcaption-side: top;\r\n\ttext-align:left;\r\n\tpadding: .5em;\r\n\tcolor: black;\r\n\tfont-weight: bold;\r\n\tfont-size: 15px;\r\n}\r\n.myui-table {\r\n\twidth: 99%;\r\n\tborder-collapse: collapse;\r\n\tmargin: 3px;\r\n\tfont-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.myui-table td, .myui-table th {\r\n\tfont-size: 1em;\r\n\tborder: 2px solid rgba(255, 255, 255, 1);\r\n\tpadding: 3px 3px 2px 3px;\r\n\ttext-align: center;\r\n}\r\n\r\n.myui-table th {\r\n\theight: 45px;\r\n\tfont-size: 1.1em;\r\n\tpadding-top: 5px;\r\n\tpadding-bottom: 4px;\r\n\tbackground-color: #4fa6db;\r\n\tcolor: #ffffff;\r\n}\r\n\r\n.myui-table tbody tr:nth-child(even) td {\r\n\tbackground-color:#f9f9f9;\r\n\theight: 28px;\r\n}\r\n\r\n.myui-table tbody tr:nth-child(odd) td {\r\n\tbackground-color:#eeeeee;\r\n\theight: 28px;\r\n}\r\n", ""]);
-// Exports
-module.exports = exports;
-
-
-/***/ }),
-/* 5 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -606,6 +439,175 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(3);
+__webpack_require__(4);
+__webpack_require__(6);
+__webpack_require__(7);
+__webpack_require__(9);
+__webpack_require__(11);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * MyUI for jQuery
+ *
+ * Copyright (c) 2020 张翠山
+ *
+ * MIT License
+ *
+ * 联系作者：290794272@qq.com(张翠山)
+ *
+ * table组件 - MyUI for jQuery
+ *
+ * 版本：0.0.1
+ */
+
+(function ($) {
+
+    // plugin definition
+    $.fn.table = function (options) {
+
+        //放弃全局变量定义的用法，避免一个页面引用两次插件数据冲突
+
+        this.url = options.url || '';
+        this.method = options.method || "GET";
+        this.dataOptions = [];
+        this.datas = [];
+
+        this.options = options || {};
+
+        var _this = this;
+
+        //遍历thread的所有tr，只取带有field的列
+        var theads = $(this).find("tr");
+        $(theads).each(function (index, trObject) {
+            $(trObject).children().each(function (index, tdObject) {
+                if (typeof $(tdObject).attr("field") != "undefined") {
+                    var ojbect = {};
+                    ojbect.field = $(tdObject).attr("field");
+                    ojbect.formatter = $(tdObject).attr("formatter");
+                    _this.dataOptions.push(ojbect);
+                }
+            });
+        });
+
+        //请求数据
+        $.ajax({
+            url: this.url,
+            method: this.method,
+            success: function success(response, index) {
+                $.each(response, function (index, value) {
+                    _this.datas.push(value);
+                });
+
+                var table = _this[0];
+
+                var html = getHtml(_this.datas, _this.dataOptions, _this.options);
+                $(html).appendTo(table);
+            }
+        });
+    };
+
+    // 计算table的html元素
+    function getHtml(datas, dataOptions, options) {
+        var html = "";
+
+        //双重for循环变量属性和值
+        $(datas).each(function (index, value) {
+            html += "<tr>";
+            $(dataOptions).each(function (index1, value1) {
+
+                if (value1.field === 'index') {
+                    //处理序号
+                    html += "<td>" + formatter(index + 1, null) + "</td>";
+                } else if (options.hasOwnProperty(value1.formatter) && typeof options[value1.formatter] === 'function') {
+                    //处理回调函数
+                    //调用回调函数，并返回值
+                    var result = options[value1.formatter].call(this, value[value1.field], value, index);
+                    html += "<td>" + result + "</td>";
+                } else {
+                    //处理其他类型
+                    html += "<td>" + formatter(value[value1.field], value1.formatter) + "</td>";
+                }
+            });
+            html += "</tr>";
+        });
+
+        return html;
+    };
+
+    //格式化数据
+    function formatter(value, formt) {
+
+        if (undefined != formt && value != null) {
+            switch (formt) {
+                case 'number':
+                    value = value.toFixed(2);
+                    break;
+                case 'daily-date':
+                    '2020-01-01';
+                    break;
+                default:
+                    value = value;
+            }
+        }
+        return value;
+    }
+
+    //  ...
+})(jQuery);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(0);
+            var content = __webpack_require__(5);
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(1);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "/**\r\n* myui-table表格定义样式\r\n*/\r\n@charset \"UTF-8\";\r\n\r\ncaption {\r\n\tcaption-side: top;\r\n\ttext-align:left;\r\n\tpadding: .5em;\r\n\tcolor: black;\r\n\tfont-weight: bold;\r\n\tfont-size: 15px;\r\n}\r\n.myui-table {\r\n\twidth: 99%;\r\n\tborder-collapse: collapse;\r\n\tmargin: 3px;\r\n\tfont-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.myui-table td, .myui-table th {\r\n\tfont-size: 1em;\r\n\tborder: 2px solid rgba(255, 255, 255, 1);\r\n\tpadding: 3px 3px 2px 3px;\r\n\ttext-align: center;\r\n}\r\n\r\n.myui-table th {\r\n\theight: 45px;\r\n\tfont-size: 1.1em;\r\n\tpadding-top: 5px;\r\n\tpadding-bottom: 4px;\r\n\tbackground-color: #4fa6db;\r\n\tcolor: #ffffff;\r\n}\r\n\r\n.myui-table tbody tr:nth-child(even) td {\r\n\tbackground-color:#f9f9f9;\r\n\theight: 28px;\r\n}\r\n\r\n.myui-table tbody tr:nth-child(odd) td {\r\n\tbackground-color:#eeeeee;\r\n\theight: 28px;\r\n}\r\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -660,7 +662,7 @@ function toComment(sourceMap) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var api = __webpack_require__(3);
+var api = __webpack_require__(0);
             var content = __webpack_require__(8);
 
             content = content.__esModule ? content.default : content;
@@ -687,13 +689,175 @@ module.exports = exported;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(1);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "/**\r\n* myui-tabs页签样式定义\r\n*/\r\n@charset \"UTF-8\";\r\n\r\n.myui-tabs div {\r\n    width: 200px;\r\n    height: 200px;\r\n    display: none;\r\n}\r\n\r\n.myui-tabs .active {\r\n    background: white;\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(0);
+            var content = __webpack_require__(10);
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(1);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".progressbar {\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    -moz-border-radius: 5px 5px 5px 5px;\r\n    -webkit-border-radius: 5px 5px 5px 5px;\r\n    border-radius: 5px 5px 5px 5px;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n.progressbar-text {\r\n    text-align: center;\r\n    position: absolute;\r\n}\r\n.progressbar-value {\r\n    position: relative;\r\n    overflow: hidden;\r\n    width: 0;\r\n    -moz-border-radius: 5px 0 0 5px;\r\n    -webkit-border-radius: 5px 0 0 5px;\r\n    border-radius: 5px 0 0 5px;\r\n}\r\n.progressbar {\r\n    border-color: #95B8E7;\r\n}\r\n.progressbar-text {\r\n    color: #000000;\r\n    font-size: 14px;\r\n}\r\n.progressbar-value,\r\n.progressbar-value .progressbar-text {\r\n    background-color: #ffe48d;\r\n    color: #000000;\r\n}\r\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * MyUI for jQuery
+ *
+ * Copyright (c) 2020 张翠山
+ *
+ * MIT License
+ *
+ * 联系作者：290794272@qq.com(张翠山)
+ *
+ * progress组件 - MyUI for jQuery
+ *
+ * 版本：0.0.1
+ */
+
+(function ($) {
+
+    //初始化工作函数
+    function init(target) {
+        //1.给P标签新增class
+        $(target).addClass("progressbar");
+
+        //2.给p标签添加子标签
+        $(target).html('<div class="progressbar-text" "></div>' + '<div class="progressbar-value">' + '<div class="progressbar-text"></div>' + '</div>');
+
+        return $(target);
+    }
+
+    //设置size函数
+    function setSize(target, width) {
+
+        var opts = $.data(target, 'progress').options;
+        var bar = $.data(target, 'progress').bar;
+        if (width) {
+            opts.width = width;
+        }
+
+        bar.width(opts.width);
+        bar.find('div.progressbar-text').css('width', opts.width);
+        bar.find('div.progressbar-text,div.progressbar-value').css({
+            height: opts.height + 'px',
+            lineHeight: opts.lineHeight + 'px'
+        });
+    }
+
+    //插件入口
+    $.fn.progress = function (options, params) {
+
+        if (typeof options == 'string') {
+            var fn = $.fn.progress.methods[options]; //获取方法
+            if (fn) {
+                return fn(this, params);
+            }
+        }
+
+        options = options || {};
+
+        this.each(function () {
+
+            var progressObject = {
+                options: $.extend({}, $.fn.progress.defaults, options),
+                bar: init(this)
+            };
+
+            $.data(this, 'progress', progressObject);
+
+            //设置目标元素的值
+            $.fn.progress.methods.setValue(this, progressObject.options.value);
+
+            setSize(this);
+        });
+    };
+
+    //原型链上的属性
+    $.fn.progress.methods = {
+        options: function options(jq) {
+            return $.data(jq[0], 'progress').options;
+        },
+        setValue: function setValue(jq, value) {
+
+            return $(jq).each(function () {
+                var opts = $.data(this, 'progress').options;
+                var text = opts.text.replace(/{value}/, value);
+
+                $(this).find('div.progressbar-value').width(value + '%');
+                $(this).find('div.progressbar-text').html(text);
+
+                var oldValue = opts.value;
+                if (oldValue != value) {
+                    //如果新值不等于旧的值，触发回调函数
+                    opts.onChange(value, oldValue);
+                    opts.value = value;
+                    // opts.onChange.call(this, value, oldValue);
+                }
+            });
+        },
+        getValue: function getValue(jq) {
+            return $.data(jq[0], 'progress').options.value;
+        },
+        resize: function resize(jq, width) {
+            return jq.each(function () {
+                setSize(this, width);
+            });
+        }
+    };
+
+    //插件默认值
+    $.fn.progress.defaults = {
+        width: 'auto',
+        height: 22,
+        value: 0, // percentage value
+        text: '{value}%',
+        onChange: function onChange(oldValue, newValue) {//空实现的回调函数
+        }
+    };
+})(jQuery);
 
 /***/ })
 /******/ ]);
