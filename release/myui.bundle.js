@@ -451,6 +451,8 @@ __webpack_require__(6);
 __webpack_require__(7);
 __webpack_require__(9);
 __webpack_require__(11);
+__webpack_require__(12);
+__webpack_require__(14);
 
 /***/ }),
 /* 3 */
@@ -886,6 +888,163 @@ module.exports = exports;
         value: 0, // percentage value
         text: '{value}%',
         onChange: function onChange(oldValue, newValue) {//空实现的回调函数
+        }
+    };
+})(jQuery);
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(0);
+            var content = __webpack_require__(13);
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(1);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".l-btn {\n  text-decoration: none;\n  display: inline-block;\n  overflow: hidden;\n  margin: 0;\n  padding: 0;\n  cursor: pointer;\n  outline: none;\n  text-align: center;\n  vertical-align: middle;\n  line-height: normal;\n}\n.l-btn-plain {\n  border-width: 0;\n  padding: 1px;\n}\n.l-btn-left {\n  display: inline-block;\n  position: relative;\n  overflow: hidden;\n  margin: 0;\n  padding: 0;\n  vertical-align: top;\n}\n.l-btn-text {\n  display: inline-block;\n  vertical-align: top;\n  width: auto;\n  line-height: 28px;\n  font-size: 14px;\n  padding: 0;\n  margin: 0 6px;\n}\n.l-btn-icon {\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  line-height: 16px;\n  position: absolute;\n  top: 50%;\n  margin-top: -8px;\n  font-size: 1px;\n}\n.l-btn span span .l-btn-empty {\n  display: inline-block;\n  margin: 0;\n  width: 16px;\n  height: 24px;\n  font-size: 1px;\n  vertical-align: top;\n}\n.l-btn span .l-btn-icon-left {\n  padding: 0 0 0 20px;\n  background-position: left center;\n}\n.l-btn span .l-btn-icon-right {\n  padding: 0 20px 0 0;\n  background-position: right center;\n}\n.l-btn-icon-left .l-btn-text {\n  margin: 0 6px 0 26px;\n}\n.l-btn-icon-left .l-btn-icon {\n  left: 6px;\n}\n.l-btn-icon-right .l-btn-text {\n  margin: 0 26px 0 6px;\n}\n.l-btn-icon-right .l-btn-icon {\n  right: 6px;\n}\n.l-btn-icon-top .l-btn-text {\n  margin: 20px 4px 0 4px;\n}\n.l-btn-icon-top .l-btn-icon {\n  top: 4px;\n  left: 50%;\n  margin: 0 0 0 -8px;\n}\n.l-btn-icon-bottom .l-btn-text {\n  margin: 0 4px 20px 4px;\n}\n.l-btn-icon-bottom .l-btn-icon {\n  top: auto;\n  bottom: 4px;\n  left: 50%;\n  margin: 0 0 0 -8px;\n}\n.l-btn-left .l-btn-empty {\n  margin: 0 6px;\n  width: 16px;\n}\n.l-btn-plain:hover {\n  padding: 0;\n}\n.l-btn-focus {\n  outline: #0000FF dotted thin;\n}\n.l-btn-large .l-btn-text {\n  line-height: 44px;\n}\n.l-btn-large .l-btn-icon {\n  width: 32px;\n  height: 32px;\n  line-height: 32px;\n  margin-top: -16px;\n}\n.l-btn-large .l-btn-icon-left .l-btn-text {\n  margin-left: 40px;\n}\n.l-btn-large .l-btn-icon-right .l-btn-text {\n  margin-right: 40px;\n}\n.l-btn-large .l-btn-icon-top .l-btn-text {\n  margin-top: 36px;\n  line-height: 24px;\n  min-width: 32px;\n}\n.l-btn-large .l-btn-icon-top .l-btn-icon {\n  margin: 0 0 0 -16px;\n}\n.l-btn-large .l-btn-icon-bottom .l-btn-text {\n  margin-bottom: 36px;\n  line-height: 24px;\n  min-width: 32px;\n}\n.l-btn-large .l-btn-icon-bottom .l-btn-icon {\n  margin: 0 0 0 -16px;\n}\n.l-btn-large .l-btn-left .l-btn-empty {\n  margin: 0 6px;\n  width: 32px;\n}\n.l-btn {\n  color: #444;\n  background: #fafafa;\n  background-repeat: repeat-x;\n  border: 1px solid #bbb;\n  background: -webkit-linear-gradient(top,#ffffff 0,#eeeeee 100%);\n  background: -moz-linear-gradient(top,#ffffff 0,#eeeeee 100%);\n  background: -o-linear-gradient(top,#ffffff 0,#eeeeee 100%);\n  background: linear-gradient(to bottom,#ffffff 0,#eeeeee 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#eeeeee,GradientType=0);\n  -moz-border-radius: 5px 5px 5px 5px;\n  -webkit-border-radius: 5px 5px 5px 5px;\n  border-radius: 5px 5px 5px 5px;\n}\n.l-btn:hover {\n  background: #eaf2ff;\n  color: #000000;\n  border: 1px solid #b7d2ff;\n  filter: none;\n}\n.l-btn-plain {\n  background: transparent;\n  border-width: 0;\n  filter: none;\n}\n.l-btn-outline {\n  border-width: 1px;\n  border-color: #b7d2ff;\n  padding: 0;\n}\n.l-btn-plain:hover {\n  background: #eaf2ff;\n  color: #000000;\n  border: 1px solid #b7d2ff;\n  -moz-border-radius: 5px 5px 5px 5px;\n  -webkit-border-radius: 5px 5px 5px 5px;\n  border-radius: 5px 5px 5px 5px;\n}\n.l-btn-disabled,\n.l-btn-disabled:hover {\n  opacity: 0.5;\n  cursor: default;\n  background: #fafafa;\n  color: #444;\n  background: -webkit-linear-gradient(top,#ffffff 0,#eeeeee 100%);\n  background: -moz-linear-gradient(top,#ffffff 0,#eeeeee 100%);\n  background: -o-linear-gradient(top,#ffffff 0,#eeeeee 100%);\n  background: linear-gradient(to bottom,#ffffff 0,#eeeeee 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#eeeeee,GradientType=0);\n}\n.l-btn-disabled .l-btn-text,\n.l-btn-disabled .l-btn-icon {\n  filter: alpha(opacity=50);\n}\n.l-btn-plain-disabled,\n.l-btn-plain-disabled:hover {\n  background: transparent;\n  filter: alpha(opacity=50);\n}\n.l-btn-selected,\n.l-btn-selected:hover {\n  background: #ddd;\n  filter: none;\n}\n.l-btn-plain-selected,\n.l-btn-plain-selected:hover {\n  background: #ddd;\n}\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * MyUI for jQuery
+ *
+ * Copyright (c) 2020 张翠山
+ *
+ * MIT License
+ *
+ * 联系作者：290794272@qq.com(张翠山)
+ *
+ * linkbuton组件 - MyUI for jQuery
+ *
+ * 版本：0.0.1
+ */
+
+(function ($) {
+
+    //初始化函数
+    function createButton(jq) {
+
+        //从元素节点中取出参数
+        var data = $.data(jq, 'linkbutton');
+
+        var opts = data.options;
+
+        $(jq).addClass('l-btn l-btn-small').css({
+            "width": opts.width + "px",
+            "height": opts.height + "px"
+        });
+        if (opts.disable) {
+            $(jq).addClass('l-btn-disabled');
+        }
+
+        $(jq).html('<span class="l-btn-left"><span class="l-btn-text">' + opts.text + '</span></span>');
+    }
+
+    //处理按钮启动或者禁用状态
+    function setDisabled(jq, disabled) {
+        if (disabled) {
+            $.data(jq, 'linkbutton').options.disable = true;
+            $(jq).addClass("l-btn-disabled");
+
+            var hrefValue = $(jq).attr("href");
+            if (hrefValue) {
+                $.data(jq, 'linkbutton').href = hrefValue;
+            }
+
+            $(jq).removeAttr('href'); //去掉a标签中的href属性
+            $(jq).removeAttr('onclick'); //去掉a标签中的onclick事件
+        } else {
+            $.data(jq, 'linkbutton').options.disable = false;
+            var href = $.data(jq, 'linkbutton').href;
+            $(jq).attr('href', href);
+            $(jq).removeClass("l-btn-disabled");
+        }
+    }
+
+    //linkbutton组件入口函数
+    $.fn.linkbutton = function (options) {
+        options = options || {};
+
+        if (typeof options == 'string') {
+            //options如果为字符串，则为调用函数
+
+            var method = $.fn.linkbutton.methods[options];
+            if (method) {
+                //判断函是否存在
+                return method(this);
+            }
+        }
+
+        $(this).each(function () {
+
+            var opts = $.extend({}, $.fn.linkbutton.defaults, options);
+
+            //将参数存入元素节点中
+            $.data(this, 'linkbutton', { options: opts });
+
+            createButton(this);
+        });
+    };
+
+    //linkbutton组件方法集
+    $.fn.linkbutton.methods = {
+        options: function options(jq) {
+            return $.data(jq[0], 'linkbutton').options;
+        },
+        disable: function disable(jq) {
+            return $(jq).each(function () {
+                setDisabled(this, true);
+            });
+        },
+        enable: function enable(jq) {
+            return $(jq).each(function () {
+                setDisabled(this, false);
+            });
+        },
+        resize: function resize() {}
+
+        //linkbutton插件默认值
+    };$.fn.linkbutton.defaults = {
+        width: 100,
+        height: 30,
+        disable: true,
+        text: 'Button',
+        size: 'normal',
+        onClick: function onClick() {
+            console.log('--默认回调函数--');
         }
     };
 })(jQuery);
