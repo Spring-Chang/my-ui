@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>linkbutton</title>
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.js"></script>
+    <script src="../../release/myui.bundle.js"></script>
+</head>
+<body>
+    <a id="btn" href="http://www.baidu.com" >easyui</a><br />
+    <button onclick="javascript:$('#btn').linkbutton('disable');">禁止</button>
+    <button onclick="javascript:$('#btn').linkbutton('enable');">启动</button>
+</body>
+<script type="text/javascript">
+
+    //1.调用方法1，默认构造参数
+    // $('#btn').linkbutton();
+
+    //2.调用方法2，带参数的构造函数
+    $('#btn').linkbutton({
+        width: 70,
+        height: 30,
+        disable: true,
+        text:'搜索按钮',
+        size:'large',
+        iconCls: 'icon-search',
+        onClick: function () {
+            alert('---选中---');
+        }
+    });
+    $('#btn').linkbutton("disable");
+    $('#btn').linkbutton("enable");
+
+    console.log($('#btn').linkbutton("options"));
+</script>
+</html>
