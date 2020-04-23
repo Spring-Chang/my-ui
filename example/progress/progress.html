@@ -11,6 +11,10 @@
 </head>
 <body>
     <div id="p" style="width:400px;"></div>
+    <div>
+        <button onclick="javascript:$('#p').progress('start')">启动</button>
+        <button onclick="javascript:$('#p').progress('stop')">停止</button>
+    </div>
 </body>
 <script type="text/javascript">
     $(function () {
@@ -20,15 +24,11 @@
             width: 400
         });
 
-        function hello(){
-            var value = $('#p').progress('getValue');
-            if (value >= 100){
-                value = 0;
-            }
-            value ++;
-            $('#p').progress('setValue', value);
-        }
-        var t2 = window.setInterval(hello,100);
+        $('#p1').progress({
+            value: 20,
+            height: 20,
+            width: 400
+        });
     });
 </script>
 </html>

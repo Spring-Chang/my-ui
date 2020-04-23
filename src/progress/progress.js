@@ -14,6 +14,8 @@
 
 (function ($) {
 
+    var handler = null;
+
     //初始化工作函数
     function init(target) {
         //1.给P标签新增class
@@ -102,6 +104,35 @@
             return jq.each(function () {
                 setSize(this, width);
             });
+        },
+        start: function (jq, speed) {
+            speed = speed || 100;
+            if(typeof speed == 'string') {
+                if('fast' == speed) {
+                    speed = 50;
+                } else if('normal' == speed) {
+                    speed = 100;
+                } else if('slow' == speed) {
+                    speed = 200;
+                } else {
+                    speed = 100;
+                }
+            }
+
+            window.clearInterval(handler);//每次触发都先清除一次
+            var value = 0;
+            function run(){
+                if (value >= 100){
+                    value = 0;
+                }
+                value ++;
+                $.fn.progress.methods.setValue(jq, value);
+                value = $.fn.progress.methods.getValue(jq);
+            }
+            handler = window.setInterval(run, speed);
+        },
+        stop: function (jq) {
+            window.clearInterval(handler);
         }
     };
 
